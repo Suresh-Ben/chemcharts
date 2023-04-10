@@ -1,0 +1,23 @@
+.my-nav {
+    height: 8rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 2.5rem;
+}
+
+.my-nav-logo {
+    height: 3rem;
+}
+
+.my-nav-links {
+    margin-left: 2rem;
+}
+
+.my-nav-link {
+    font-size: 1rem;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    text-decoration: none;
+    font-weight: bold;
+}

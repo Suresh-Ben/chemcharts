@@ -1,0 +1,42 @@
+/* temperature-body */
+
+.row {
+    margin: 0;
+}
+
+.temp-col {
+    border-style: solid;
+    border-width: .05rem;
+    border-radius: .5rem;
+    border-color: #182747;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+.temp-col h1 {
+    font-size: 1rem;
+}
+
+.temp-col input {
+    align-self: flex-end;
+    text-align: center;
+    border-radius: .5rem;
+    border-width: .05rem;
+    border-color: #B7C4CF;
+    height: 1.5rem;
+    width: 10rem;
+    font-size: 1rem;
+    margin-left: 55%;
+    margin-bottom: .5rem;
+}
+
+.temp-body {
+    background-color: #BACDDB;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.formulai {
+    margin-top: 2rem;
+}

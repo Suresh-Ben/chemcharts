@@ -1,0 +1,12 @@
+.convs {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scrollable {
+    height: 70vh;
+    overflow: scroll;
+    overflow-x: hidden;
+}

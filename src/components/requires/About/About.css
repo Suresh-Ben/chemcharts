@@ -1,0 +1,36 @@
+.about {
+    height: 25rem;
+    background: linear-gradient(110deg, #323a45 50%, #282A3A 50%);
+    padding-top: 2.5rem;
+    padding-bottom: 1.5rem;
+    padding-right: 2.5rem;
+    padding-left: 2.5rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-us {
+    margin-right: 1.5rem;
+}
+
+.about-links {
+    margin-left: 1.5rem;
+}
+
+.about-link-img {
+    height: 2.5rem;
+    margin-right: .5rem;
+}
+
+.about-link-img:hover {
+    background-color: rgb(101, 140, 178);
+    border-radius: 2rem;
+}
+
+.about-link-name {
+    color: white;
+    text-decoration: none;
+}
