@@ -54,6 +54,9 @@
     .my-nav-links-close {
         height: 0;
     }
+    .nav-link-close {
+        display: none;
+    }
     .nav-button {
         display: inline-block;
         background-color: white;

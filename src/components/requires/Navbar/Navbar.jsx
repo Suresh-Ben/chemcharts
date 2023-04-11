@@ -7,17 +7,17 @@ function Navbar() {
 
     const [myLinks, setMyLinks] = useState(false);
     const [myLinksClasses, setMyLinkClasses] = useState("my-nav-links my-nav-links-close");
-    const [myLinkStyle, setMyLinkStyle] = useState({display: 'none'});
+    const [myLinkClass, setMyLinkClass] = useState("my-nav-link");
     useEffect(()=>{
         if(myLinks) {
             setMyLinkClasses("my-nav-links my-nav-links-open");
             setTimeout(()=>{
-                setMyLinkStyle({});
+                setMyLinkClass("my-nav-link");
             }, 150);
         }
         else {
             setMyLinkClasses("my-nav-links my-nav-links-close");
-            setMyLinkStyle({display: 'none'});
+            setMyLinkClass("my-nav-link nav-link-close");
         }
 
     },[myLinks])
@@ -38,10 +38,10 @@ function Navbar() {
                 </button>
             </div>
             <div className={myLinksClasses}>
-                <a style={myLinkStyle} className="my-nav-link" href="./#home">Home</a>
-                <a style={myLinkStyle} className="my-nav-link" href="./#graphs">Graphs</a>
-                <a style={myLinkStyle} className="my-nav-link" href="./#convs">Conversions</a>
-                <a style={myLinkStyle} className="my-nav-link" href="./#about">About</a>
+                <a className={myLinkClass} href="./#home">Home</a>
+                <a className={myLinkClass} href="./#graphs">Graphs</a>
+                <a className={myLinkClass} href="./#convs">Conversions</a>
+                <a className={myLinkClass} href="./#about">About</a>
             </div>
         </div>
     );
