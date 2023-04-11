@@ -40,6 +40,8 @@
         padding-top: .5rem;
         padding-bottom: 1rem;
         transition: all 1s;
+        align-items: center;
+        justify-content: center;
     }
     .my-nav-links {
         display: flex;

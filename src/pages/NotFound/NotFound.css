@@ -1,0 +1,13 @@
+.not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.not-found-head {
+    font-size: 5rem;
+}
+
+
+/* .not-found-para {} */
