@@ -4,3 +4,13 @@
     align-items: center;
     justify-content: center;
 }
+
+.whatis-para {
+    font-size: 1.4rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .whatis-para {
+        font-size: 1rem;
+    }
+}

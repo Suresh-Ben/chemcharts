@@ -6,3 +6,4 @@ export const graphs = require('./images/graphs.png');
 export const convs = require('./images/convs.png');
 export const mail = require('./images/mail.png');
 export const falsks = require('./images/fasks.jpg');
+export const menu = require('./images/menu.png');

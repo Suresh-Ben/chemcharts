@@ -12,6 +12,12 @@
     align-items: center;
 }
 
+.about-main {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
 .about-us {
     margin-right: 1.5rem;
 }
@@ -33,4 +39,19 @@
 .about-link-name {
     color: white;
     text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .about {
+        height: auto;
+        width: 100vw;
+    }
+    .about-main {
+        flex-direction: column;
+        justify-content: space-between;
+        width: 98%;
+    }
+    .about-links {
+        margin-top: 3rem;
+    }
 }

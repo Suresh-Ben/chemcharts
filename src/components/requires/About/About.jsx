@@ -6,7 +6,7 @@ import { linkedin, mail } from '../../../content/images';
 function About() {
     return(
         <div className="about">
-            <div style={{display: "flex", justifyContent: "space-between", width: "80%"}}>
+            <div className="about-main">
                 <div className="about-us">
                     <h2 style={{margin: 0}}>Dr B R Ambedkar National Institute of Technology, Jalandhar</h2>
                     <p style={{margin: 0}}>G.T. Road, Amritsar Bye-Pass, Jalandhar, Punjab</p>
