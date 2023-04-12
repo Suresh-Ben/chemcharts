@@ -38,7 +38,7 @@ function BinaryGraph() {
     function xaSpline() {
         if(!binaryData) return;
         
-        const _xa = binaryData.x_benzene;
+        const _xa = binaryData.x_a;
         const temperature = binaryData.temperature;
         const temp_xaSpline = new Spline(_xa, temperature);
         setXaSpline(temp_xaSpline);
@@ -48,7 +48,7 @@ function BinaryGraph() {
         if(!binaryData) return;
 
         const temperature = binaryData.temperature;
-        const _ya = binaryData.y_benzene;
+        const _ya = binaryData.y_a;
         const temp_yaSpline = new Spline(_ya, temperature);
         setYaSpline(temp_yaSpline);
     }
@@ -56,6 +56,10 @@ function BinaryGraph() {
     useEffect(()=>{
         if(selectedGraph === "benzene toulene" && (binaryData? binaryData.title !== graphsData.benzene_toulene.title: true))
             setBinaryData(graphsData.benzene_toulene);
+        else if(selectedGraph === "acetone water" && (binaryData? binaryData.title !== graphsData.acetone_water.title : true))
+            setBinaryData(graphsData.acetone_water);
+        else if(selectedGraph === "acetone ethanol" && (binaryData? binaryData.title !== graphsData.acetone_ethanol.title : true))
+            setBinaryData(graphsData.acetone_ethanol);
 
         xaSpline();
         yaSpline();
@@ -99,9 +103,9 @@ function BinaryGraph() {
             setTempErr(null);
 
         temperature.reverse();
-        const _xa = binaryData.x_benzene;
+        const _xa = binaryData.x_a;
         _xa.reverse();
-        const _ya = binaryData.y_benzene;
+        const _ya = binaryData.y_a;
         _ya.reverse();
         const xTempSpline = new Spline(temperature, _xa);
         const yTempSpline = new Spline(temperature, _ya);
@@ -179,41 +183,61 @@ function BinaryGraph() {
                 <h1 style={{textAlign: 'center', marginBottom: '1rem'}}>Binary Graphs</h1>
                 <div className="binary-graph-main">
                     <div className="graph">
-                        <h3>{binaryData? binaryData.title : 'Binary Graph'}</h3>
+                        <h3 style={{textAlign: 'center'}}>{binaryData? binaryData.title : 'Binary Graph'}</h3>
         
                         {xa_spline && ya_spline ? 
                             <Chart 
                                 type="line"
-                                width={600}
-                                height={580}
+                                width={window.innerWidth < 600? window.innerWidth*0.9 : 600}
+                                height={window.innerWidth < 600? window.innerWidth*0.88 :580}
                         
                                 series={[
                                     {
                                         name: 'Bubble curve',
                                         data: [ truncateDecimals(xa_spline.at(0)),
+                                                truncateDecimals(xa_spline.at(0.05)),
                                                 truncateDecimals(xa_spline.at(0.1)), 
+                                                truncateDecimals(xa_spline.at(0.15)), 
                                                 truncateDecimals(xa_spline.at(0.2)), 
+                                                truncateDecimals(xa_spline.at(0.25)), 
                                                 truncateDecimals(xa_spline.at(0.3)), 
+                                                truncateDecimals(xa_spline.at(0.35)), 
                                                 truncateDecimals(xa_spline.at(0.4)), 
+                                                truncateDecimals(xa_spline.at(0.45)), 
                                                 truncateDecimals(xa_spline.at(0.5)), 
+                                                truncateDecimals(xa_spline.at(0.55)), 
                                                 truncateDecimals(xa_spline.at(0.6)), 
+                                                truncateDecimals(xa_spline.at(0.65)), 
                                                 truncateDecimals(xa_spline.at(0.7)), 
+                                                truncateDecimals(xa_spline.at(0.75)), 
                                                 truncateDecimals(xa_spline.at(0.8)), 
+                                                truncateDecimals(xa_spline.at(0.85)), 
                                                 truncateDecimals(xa_spline.at(0.9)), 
+                                                truncateDecimals(xa_spline.at(0.95)), 
                                                 truncateDecimals(xa_spline.at(1))]
                                     },
                                     {
                                         name: 'Dew curve',
                                         data: [ truncateDecimals(ya_spline.at(0)),
+                                                truncateDecimals(ya_spline.at(0.05)),
                                                 truncateDecimals(ya_spline.at(0.1)), 
+                                                truncateDecimals(ya_spline.at(0.15)), 
                                                 truncateDecimals(ya_spline.at(0.2)), 
+                                                truncateDecimals(ya_spline.at(0.25)), 
                                                 truncateDecimals(ya_spline.at(0.3)), 
+                                                truncateDecimals(ya_spline.at(0.35)), 
                                                 truncateDecimals(ya_spline.at(0.4)), 
+                                                truncateDecimals(ya_spline.at(0.45)), 
                                                 truncateDecimals(ya_spline.at(0.5)), 
+                                                truncateDecimals(ya_spline.at(0.55)), 
                                                 truncateDecimals(ya_spline.at(0.6)), 
+                                                truncateDecimals(ya_spline.at(0.65)), 
                                                 truncateDecimals(ya_spline.at(0.7)), 
+                                                truncateDecimals(ya_spline.at(0.75)), 
                                                 truncateDecimals(ya_spline.at(0.8)), 
+                                                truncateDecimals(ya_spline.at(0.85)), 
                                                 truncateDecimals(ya_spline.at(0.9)), 
+                                                truncateDecimals(ya_spline.at(0.95)), 
                                                 truncateDecimals(ya_spline.at(1))]
                                     }
                                 ]}
@@ -221,7 +245,8 @@ function BinaryGraph() {
                                 options={{
                                     xaxis:{
                                         title: {text: (binaryData? binaryData.a: '' ) + '(x) mole-fraction'},
-                                        categories:['0', '0.1', '0.2', '0.3', '0.4', '0.5', '0.6', '0.7', '0.8', '0.9', '1']
+                                        categories:['0', '0.05', '0.1', '0.15', '0.2', '0.25', '0.3', '0.35', '0.4', '0.45', '0.5', 
+                                                    '0.55', '0.6', '0.65', '0.7', '0.75', '0.8', '0.85', '0.9', '0.95', '1']
                                     },
                                     stroke: {
                                         curve: 'straight',
@@ -237,7 +262,7 @@ function BinaryGraph() {
                         }
                     </div>
                     <div className="graph-calculas">
-                        <label style={{paddingRight: '1rem'}} htmlFor="graphs">Choose a graph: </label>
+                        <label style={{paddingRight: '1rem', marginLeft: '1rem'}} htmlFor="graphs">Choose a graph: </label>
                         <select
                             name="graphs"
                             value={selectedGraph}
@@ -245,8 +270,9 @@ function BinaryGraph() {
                                 setSelectedGraph(e.target.value);
                             }}
                         >
-                            <option value="someOption">benzene toulene</option>
-                            <option value="otherOption">Other option</option>
+                            <option value="benzene toulene">benzene toulene</option>
+                            <option value="acetone water">acetone water</option>
+                            <option value="acetone ethanol">acetone ethanol</option>
                         </select>
                         
                         <div className="graph-caluculations row">

@@ -29,3 +29,26 @@
     width: 48%;
     margin: 1%;
 }
+
+@media only screen and (max-width: 600px) {
+    .binary-graph-main {
+        flex-direction: column;
+    }
+    .graph-calculas {
+        width: 100%;
+    }
+    .graph-caluculations {
+        width: 92vw;
+        margin: 4vw;
+    }
+    .comp-wid {
+        width: 100vw;
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .graph {
+        margin: 2rem;
+        margin-right: 0;
+        margin-left: 0;
+    }
+}

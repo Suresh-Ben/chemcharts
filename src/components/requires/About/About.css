@@ -51,7 +51,14 @@
         justify-content: space-between;
         width: 98%;
     }
+    .about-main {
+        width: 85vw;
+    }
+    .about-us {
+        margin: 0;
+    }
     .about-links {
         margin-top: 3rem;
+        margin-left: 0;
     }
 }
