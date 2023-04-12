@@ -1,0 +1,31 @@
+.graph {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5rem;
+    margin-right: 0;
+    margin-left: 0;
+    width: 50%;
+}
+
+.binary-graph-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.graph-calculas {
+    width: 50%;
+}
+
+.graph-caluculations {
+    padding-top: 1.8rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.comp-wid {
+    width: 48%;
+    margin: 1%;
+}

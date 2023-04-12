@@ -35,6 +35,8 @@
     .main {
         background-size: auto;
         height: calc(100vh - 5.5rem);
+        background-image: url('../../../content/images/mobile_background.jpg');
+        background-size: 100vw auto;
         width: 100vw;
     }
     .main-head {
