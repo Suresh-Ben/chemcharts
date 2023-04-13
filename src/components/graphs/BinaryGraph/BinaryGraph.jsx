@@ -60,6 +60,8 @@ function BinaryGraph() {
             setBinaryData(graphsData.acetone_water);
         else if(selectedGraph === "acetone ethanol" && (binaryData? binaryData.title !== graphsData.acetone_ethanol.title : true))
             setBinaryData(graphsData.acetone_ethanol);
+        else if(selectedGraph === "ethanol water" && (binaryData? binaryData.title !== graphsData.ethanol_water.title : true))
+            setBinaryData(graphsData.ethanol_water);
 
         xaSpline();
         yaSpline();
@@ -246,7 +248,9 @@ function BinaryGraph() {
                                     xaxis:{
                                         title: {text: (binaryData? binaryData.a: '' ) + '(x) mole-fraction'},
                                         categories:['0', '0.05', '0.1', '0.15', '0.2', '0.25', '0.3', '0.35', '0.4', '0.45', '0.5', 
-                                                    '0.55', '0.6', '0.65', '0.7', '0.75', '0.8', '0.85', '0.9', '0.95', '1']
+                                                    '0.55', '0.6', '0.65', '0.7', '0.75', '0.8', '0.85', '0.9', '0.95', '1'],
+                                        // categories:['0', '', '0.1', '', '0.2', '', '0.3', '', '0.4', '', '0.5', 
+                                        //             '', '0.6', '', '0.7', '', '0.8', '', '0.9', '', '1']
                                     },
                                     stroke: {
                                         curve: 'straight',
@@ -271,6 +275,7 @@ function BinaryGraph() {
                             }}
                         >
                             <option value="benzene toulene">benzene toulene</option>
+                            <option value="ethanol water">ethanol water</option>
                             <option value="acetone water">acetone water</option>
                             <option value="acetone ethanol">acetone ethanol</option>
                         </select>
