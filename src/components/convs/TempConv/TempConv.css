@@ -40,3 +40,41 @@
 .formulai {
     margin-top: 2rem;
 }
+
+.converter-area {
+    background-color: #ababab;
+    padding: .5rem;
+    border-radius: .5rem;
+    width: 50%;
+}
+
+.convert-input {
+    border-radius: .3rem;
+    padding: .2rem .5rem;
+    font-size: 1.2rem;
+    padding-right: 0;
+    margin-bottom: .75rem;
+}
+
+.converter-options {
+    border-radius: .3rem;
+    max-height: 20vh;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+.converter-option {
+    background-color: white;
+    border: none;
+}
+
+.converter-option:hover {
+    background-color: rgb(217, 217, 217);
+}
+
+@media only screen and (max-width: 600px) {
+    .converter-area {
+        width: 95%;
+    }
+}

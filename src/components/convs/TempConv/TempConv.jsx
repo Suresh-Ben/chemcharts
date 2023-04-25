@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
 import './TempConv.css';
 import Navbar from '../../requires/Navbar';
@@ -6,143 +6,195 @@ import About from '../../requires/About';
 
 function TempConv() {
 
-    const [celsius, setCelsius] = useState('');
-    const [fahrenheit, setFahrenheit] = useState('');
-    const [kelvin, setKelvin] = useState('');
-    const [rankine, setRankine] = useState('');
+    const [from, setFrom] = useState('0');
+    const [to, setTo] = useState('0');
+    const [fromValue, setFromValue] = useState('');
+    const [toValue, setToValue] = useState('');
 
     function truncateDecimals(number) {
-        var ans = Math.round(number*100);
-        return ans/100;
+      var ans = Math.round(number*100);
+      return ans/100;
     };
 
-    function resetScales() {
-        setCelsius('');
-        setFahrenheit('');
-        setKelvin('');
-        setRankine('');
-    }
+    function convertCelcius() {
+      if(fromValue === '') {
+        setToValue('');
+        return;
+      }
 
-    function convertCelsius(cel) {
-        if(cel === '') {
-            resetScales();
-            return;
-        }
-        cel = Number(cel);
+      let cel = Number(fromValue);
+      if(to === '0') {
+        setToValue(cel);
+        return;
+      }
+      if(to === '1'){
         let fahr = truncateDecimals((cel * 9)/5  + 32);
+        setToValue(fahr);
+      }
+      else if(to === '2'){
         let kelv = truncateDecimals(cel + 273.15);
+        setToValue(kelv);
+      }
+      else if(to === '3'){
         let rank = truncateDecimals(((cel + 273.15)*9)/5);
-
-        setFahrenheit(fahr);
-        setKelvin(kelv);
-        setRankine(rank);
+        setToValue(rank);
+      }
     }
 
-    function convertFahrenheit(fahr) {
-        if(fahr === '') {
-            resetScales();
-            return;
+    function convertKelvin() {
+      if(fromValue === '') {
+        setToValue('');
+        return;
+      }
+
+        const kelv = Number(fromValue);
+        if(to === '1') setToValue(kelv);
+        else if(to === '0'){
+          let cel = truncateDecimals(kelv - 273.15);
+          setToValue(cel);
         }
-        fahr = Number(fahr);
+        else if(to === '2'){
+          let fahr = truncateDecimals((kelv*9)/5 - 459.67);
+          setToValue(fahr);
+        }
+        else if(to === '3'){
+          let rank = truncateDecimals(kelv*9)/5;
+          setToValue(rank);
+        }
+    }
+
+    function convertFahrenheit() {
+      if(fromValue === '') {
+        setToValue('');
+        return;
+      }
+
+      const fahr = Number(fromValue);
+      if(to === '2') setToValue(fahr);
+      else if(to === '0'){
         let cel = truncateDecimals(((fahr - 32)*5)/9);
+        setToValue(cel);
+      }
+      else if(to === '1'){
         let kelv = truncateDecimals(((fahr + 459.67)*5)/9);
+        setToValue(kelv)
+      }
+      else if(to === '3'){
         let rank = truncateDecimals(fahr + 459.67);
-
-        setCelsius(cel);
-        setKelvin(kelv);
-        setRankine(rank);
+        setToValue(rank);
+      }
     }
 
-    function convertKelvin(kelv) {
-        if(kelv === '') {
-            resetScales();
-            return;
-        }
-        kelv = Number(kelv);
-        let cel = truncateDecimals(kelv - 273.15);
-        let fahr = truncateDecimals((kelv*9)/5 - 459.67);
-        let rank = truncateDecimals(kelv*9)/5;
-
-        setCelsius(cel);
-        setFahrenheit(fahr);
-        setRankine(rank);
-    }
-
-    function convertRankine(rank) {
-        if(rank === '') {
-            resetScales();
-            return;
-        }
-        rank = Number(rank);
+    function convertRankin() {
+      if(fromValue === '') {
+        setToValue('');
+        return;
+      }
+    
+      const rank = Number(fromValue);
+      if(to === '3') setToValue(rank);
+      else if(to === '0'){
         let cel = truncateDecimals(((rank - 491.67)*5)/9);
-        let fahr = truncateDecimals(rank - 459.67);
+        setToValue(cel);
+      }
+      else if(to === '1'){
         let kelv = truncateDecimals((rank*5)/9);
-
-        setCelsius(cel);
-        setFahrenheit(fahr);
-        setKelvin(kelv);
+        setToValue(kelv)
+      }
+      else if(to === '2'){
+        let fahr = truncateDecimals(rank - 459.67);
+        setToValue(fahr);
+      }
     }
 
+    useEffect(()=>{
+      if(from === '0')
+        convertCelcius();
+      else if(from === '1')
+        convertKelvin();
+      else if(from === '2')
+        convertFahrenheit();
+      else if(from === '3')
+        convertRankin();
+    },[from, to, fromValue]);
+  
     return(
         <div>
             <Navbar />
-
             <div className="temp-body">
             <div className="container">
 
                 <h2 className="topic">Celsius, Fahrenheit, Kelvin and Rankine Converter</h2>
-
-                <div className="row align-items-center justify-content-center">
-
-                  <div className="col-lg-5 col-md-5 temp-col">
-                    <h1>Celsius</h1>
-                    <input className="celsius my-input" placeholder="temprature(°C)" type="number" value={celsius} 
-                        onChange={(e) => {
-                            setCelsius(e.target.value);
-                            convertCelsius(e.target.value);
-                        }}
+                <div className="row justify-content-center align-items-center">
+                <div className="row converter-area">
+                <div className="col-lg-6 col-sm-10 convert-from converter">
+                    From:
+                    <input type="number" style={{width: '100%'}}  className="convert-input"
+                      value={fromValue}
+                      onChange={e=>setFromValue(e.target.value)}
                     />
-                  </div>
-                  <div className="col-lg-5 col-md-5 temp-col">
-                    <h1>Fahrenheit</h1>
-                    <input className="fahrenheit my-input" placeholder="temprature(°F)" type="number" value={fahrenheit} 
-                        onChange={(e) => {
-                            setFahrenheit(e.target.value);
-                            convertFahrenheit(e.target.value);
+                    <div style={{margin: 0, padding: 0, display: 'flex', flexDirection: 'column', overflowY: 'scroll'}} className="converter-options">
+                      <button 
+                        style={from === '0'? {backgroundColor: "grey", color: "white"}: {}} className="converter-option"
+                        onClick={()=>{
+                          setFrom('0');
                         }}
-                    />
-                  </div>
-                  <div className="col-lg-5 col-md-5 temp-col">
-                    <h1>Kelvin</h1>
-                    <input className="kelvin my-input" placeholder="temprature(K)" type="number" value={kelvin} 
-                        onChange={(e) => {
-                            setKelvin(e.target.value);
-                            convertKelvin(e.target.value);
+                      >Celsius</button>
+                      <button className="converter-option"
+                        style={from === '1'? {backgroundColor: "grey", color: "white"}: {}}
+                        onClick={()=>{
+                          setFrom('1');
                         }}
-                    />
-                  </div>
-                  <div className="col-lg-5 col-md-5 temp-col">
-                    <h1>Rankine</h1>
-                    <input className="rankine my-input" placeholder="temprature(°R)" type="number" value={rankine} 
-                        onChange={(e) => {
-                            setRankine(e.target.value);
-                            convertRankine(e.target.value);
+                      >Kelvin</button>
+                      <button className="converter-option"
+                        style={from === '2'? {backgroundColor: "grey", color: "white"}: {}}
+                        onClick={()=>{
+                          setFrom('2');
                         }}
-                    />
+                      >Fahrenheit</button>
+                      <button className="converter-option"
+                        style={from === '3'? {backgroundColor: "grey", color: "white"}: {}}
+                        onClick={()=>{
+                          setFrom('3');
+                        }}
+                      >Rankine</button>
+                    </div>
                   </div>
 
+                  <div className="col-lg-6 col-sm-10 convert-to converter">
+                    To:
+                    <input type="number" style={{width: '100%'}}  className="convert-input"
+                      value={toValue}
+                    />
+                    <div style={{margin: 0, padding: 0, display: 'flex', flexDirection: 'column', overflowY: 'scroll'}} className="converter-options">
+                      <button className="converter-option"
+                        style={to === '0'? {backgroundColor: 'grey'}: {}}
+                        onClick={()=>{
+                          setTo('0');
+                        }}
+                      >Celsius</button>
+                      <button className="converter-option"
+                        style={to === '1'? {backgroundColor: 'grey'}: {}}
+                        onClick={()=>{
+                          setTo('1');
+                        }}
+                      >Kelvin</button>
+                      <button className="converter-option"
+                        style={to === '2'? {backgroundColor: 'grey'}: {}}
+                        onClick={()=>{
+                          setTo('2');
+                        }}
+                      >Fahrenheit</button>
+                      <button className="converter-option"
+                        style={to === '3'? {backgroundColor: 'grey'}: {}}
+                        onClick={()=>{
+                          setTo('3');
+                        }}
+                      >Rankine</button>
+                    </div>
+                  </div>
                 </div>
-
-                <div className="pt-2 d-flex justify-content-center">
-                  <button className="btn btn-outline-primary mx-2 px-3 py-0 reset"
-                    onClick={()=>{
-                        resetScales();
-                    }}
-                  >
-                    Reset
-                </button>
                 </div>
-
 
                 <div className="formulai row align-items-center">
 

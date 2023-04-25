@@ -3,12 +3,13 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 import Home from './pages/Home';
+import NotFound from './pages/NotFound';
 
 import TempConv from './components/convs/TempConv';
+import PressConv from './components/convs/PressConv';
 
 import BinaryGraph from './components/graphs/BinaryGraph';
 
-import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -19,9 +20,10 @@ function App() {
 
           {/* conversions */}
           <Route path='/temp-conv' element={< TempConv />}></Route>
+          <Route path='/press-conv' element={< PressConv />}></Route>
 
           {/* graphs */}
-          <Route path='/binary-graph' element={< BinaryGraph />}></Route>
+          <Route path='/binary-txy-graph' element={< BinaryGraph />}></Route>
 
           {/* Not found */}
           <Route path='/404' element={< NotFound />} />

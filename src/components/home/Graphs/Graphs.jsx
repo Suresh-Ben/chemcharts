@@ -5,12 +5,42 @@ import './Graphs.css';
 function Graphs() {
 
     const graphs = [
-        {
-            id: 0,
-            link: 'binary-graph',
-            title: 'Binary Graph',
-            disc: 'Txy graph, get equilibrium concentrations of binary mixture'
-        }
+      {
+        id: 0,
+        link: 'binary-txy-graph',
+        title: 'Binary Graph(Txy)',
+        disc: 'Txy, are graphical representations of the relationship between temperature, composition, and vapor-liquid equilibrium conditions for a binary mixture at constant pressure.'
+      },
+      {
+        id: 0,
+        link: 'binary-pxy-graph',
+        title: 'Binary Graph(Pxy)',
+        disc: 'Pxy, are graphical representations of the relationship between pressure, composition, and vapor-liquid equilibrium conditions for a binary mixture at constant Temperature.'
+      },
+      {
+        id: 0,
+        link: 'binary-xy-graph',
+        title: 'Binary Graph(xy)',
+        disc: 'xy diagram is a graphical representation of the composition of a binary mixture in the liquid phase versus the composition of the same binary mixture in the vapor phase at a given temperature and pressure'
+      },
+      {
+        id: 0,
+        link: 'mollier-graph',
+        title: 'Mollier Charts',
+        disc: 'Mollier charts are graphical representations of enthalpy and entropy as a function of temperature and pressure, commonly used in thermodynamics.'
+      },
+      {
+        id: 0,
+        link: 'mollier-graph',
+        title: 'Ternary phase diagrams',
+        disc: 'Ternary phase diagrams are triangular diagrams used to understand the behavior of mixtures of three substances and to determine the composition and properties of the phases present in a ternary system.'
+      },
+      {
+        id: 0,
+        link: 'mollier-graph',
+        title: 'McCabe-Thiele',
+        disc: 'The McCabe-Thiele diagram is a graphical method used to determine the number of plates required for distillation based on the vapor-liquid equilibrium relationship between two components'
+      }
     ];
 
     return(
